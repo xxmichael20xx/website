@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/dashboard">
+      <img src="/assets/favicon.ico" width="30" height="30" class="d-inline-block align-self-center" alt=""
+        loading="lazy">
+      Dashboard
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item mx-2" *ngFor="let link of links">
+          <a class="nav-link h6" [routerLink]="link.link" routerLinkActive="router-link-active">
+            <mat-icon class="icon-middle">{{ link.icon }}</mat-icon>{{ link.label }}</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link h6" (click)="logout()"><mat-icon class="icon-middle">power_settings_new</mat-icon>Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container py-3">
+  <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,73 @@
+<mat-dialog-content>
+  <div class="container py-3">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <div class="form-group row">
+        <div class="col-md-12 text-center">
+          <p class="h5 font-weight-bolder">New Project Information</p>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="form-group row">
+        <mat-form-field class="col-md-12">
+          <mat-label>Title</mat-label>
+          <input type="text" matInput formControlName="title">
+        </mat-form-field>
+
+        <mat-form-field class="col-md-12">
+          <mat-label>Description</mat-label>
+          <textarea matInput formControlName="description" rows="5"></textarea>
+        </mat-form-field>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-md-10">
+          <p class="h6">Additional Project information</p>
+        </div>
+
+        <div class="col-md-2">
+          <button type="button" mat-raised-button color="primary" (click)="addOthers()">Add more</button>
+        </div>
+
+        <div formArrayName="others" class="mt-3">
+          <div class="form-group row" *ngFor="let other of others().controls; let i = index;" [formGroupName]="i">
+            <div class="col-md-5">
+              <mat-form-field class="col-md-12">
+                <mat-label>Category</mat-label>
+                <mat-select formControlName="category">
+                  <mat-option value="Front-End">Front-End</mat-option>
+                  <mat-option value="Back-End">Back-End</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div class="col-md-5">
+              <mat-form-field class="col-md-12">
+                <mat-label>Details</mat-label>
+                <input type="text" matInput formControlName="details">
+              </mat-form-field>
+            </div>
+
+            <div class="col-md-2" *ngIf="i !== 0">
+              <button type="button" mat-raised-button color="warn" (click)="removeOthers(i)">Remove</button>
+            </div>
+            <div class="col-md-2" *ngIf="i == 0">
+              <!--  -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="form-group row">
+        <div class="col-md-12 text-center">
+          <button type="button" mat-raised-button color="accent" (click)="cancel()">Cancel</button>
+          &nbsp;
+          <button type="submit" mat-raised-button color="dark" [disabled]="!form.valid">Save</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</mat-dialog-content>

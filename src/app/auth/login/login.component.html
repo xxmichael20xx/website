@@ -1,0 +1,23 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <div class="form-group row mt-3">
+    <mat-form-field class="col-md-12">
+      <mat-label>Email</mat-label>
+      <input type="text" matInput formControlName="email">
+    </mat-form-field>
+  </div>
+
+  <div class="form-group row">
+    <mat-form-field class="col-md-12">
+      <mat-label>Password</mat-label>
+      <input type="password" matInput formControlName="password">
+    </mat-form-field>
+  </div>
+
+  <hr>
+
+  <div class="form-group row">
+    <div class="col-md-12">
+      <button type="submit" mat-raised-button class="col-md-12" color="dark">Login</button>
+    </div>
+  </div>
+</form>

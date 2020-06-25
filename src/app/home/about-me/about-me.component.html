@@ -1,0 +1,43 @@
+<div class="form-group row">
+  <div class="col-md-12">
+    <p class="h5 font-weight-bolder under-line">{{ aboutMe?.title }}</p>
+  </div>
+
+  <div class="col-md-12 text-justify">
+    <p class="h6" [innerHtml]="aboutMe?.details"></p>
+  </div>
+</div>
+
+<hr>
+
+<div class="form-group row mt-4">
+  <div class="col-md-12 mb-3">
+    <p class="h5 font-weight-bolder under-line">Coding Skills</p>
+  </div>
+
+  <div class="col-md-6">
+    <p class="h5 font-weight-bolder">Front-End</p>
+
+    <div class="form-group row" style="margin-top: -10px;" *ngFor="let front of fronts">
+      <div class="col-md-12">
+        <p class="h6">{{ front?.title }}</p>
+        <div class="progress">
+          <div class="progress-bar {{ front.color }}" role="progressbar" [ngStyle]="{'width': front.count + '%'}" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <p class="h5 font-weight-bolder">Back-End</p>
+
+    <div class="form-group row" style="margin-top: -10px;" *ngFor="let back of backs">
+      <div class="col-md-12">
+        <p class="h6">{{ back?.title }}</p>
+        <div class="progress">
+          <div class="progress-bar {{ back.color }}" role="progressbar" [ngStyle]="{'width': back.count + '%'}"
+            aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

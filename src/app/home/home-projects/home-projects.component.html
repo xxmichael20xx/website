@@ -1,0 +1,29 @@
+<div class="form-group row">
+  <div class="col-md-12 mb-3">
+    <p class="h5 font-weight-bolder under-line">Projects</p>
+    <p class="h6">List of projects accomplished as a Freelancer.</p>
+  </div>
+</div>
+
+<hr>
+
+<div class="form-group row project-container">
+  <div class="col-md-12 mb-3" *ngFor="let project of projects">
+    <p class="h6 font-weight-bold under-line">{{ project?.title }}</p>
+    <p class="h6" [innerHtml]="project?.description"></p>
+    <div class="form-group row">
+      <div class="col-md-6">
+        <p class="h6">Front-End</p>
+        <p class="h6" *ngFor="let front of project.fronts">* {{ front?.details }}</p>
+      </div>
+      <div class="col-md-6">
+        <p class="h6">Back-End</p>
+        <p class="h6" *ngFor="let back of project.backs">* {{ back?.details }}</p>
+      </div>
+      <div class="col-md-12 text-right">
+        <small>Posted on: {{ project?.created_at | date: 'medium' }}</small>
+      </div>
+    </div>
+    <hr>
+  </div>
+</div>

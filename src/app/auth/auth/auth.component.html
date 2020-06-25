@@ -1,0 +1,13 @@
+<div class="container py-3">
+  <div class="form-group row">
+    <div class="col-md-4 mx-auto shadow py-3">
+      <nav mat-tab-nav-bar>
+        <a mat-tab-link *ngFor="let link of links" [routerLink]="link.path" routerLinkActive
+          #rla="routerLinkActive" [active]="rla.isActive" class="font-weight-bolder">
+          {{link.label}}
+        </a>
+      </nav>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

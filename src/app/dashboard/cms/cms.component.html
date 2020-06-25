@@ -1,0 +1,181 @@
+<div class="form-group row">
+  <div class="col-md-4 mt-2">
+    <form [formGroup]="form" (ngSubmit)="submit('cms')">
+      <div class="card shadow rounded">
+        <div class="card-body">
+          <div class="form-group row">
+            <div class="col-md-12 text-center">
+              <p class="h6 font-weight-bolder" *ngIf="!update">New Content</p>
+              <p class="h6 font-weight-bolder" *ngIf="update">Update Content</p>
+            </div>
+          </div>
+
+          <hr>
+
+          <div class="form-group row">
+            <mat-form-field class="col-md-12">
+              <mat-label>Title</mat-label>
+              <input type="text" matInput formControlName="title">
+            </mat-form-field>
+
+            <mat-form-field class="col-md-12">
+              <mat-label>Details</mat-label>
+              <textarea matInput formControlName="details" rows="5"></textarea>
+            </mat-form-field>
+          </div>
+
+          <hr>
+          
+          <div class="form-group row text-right">
+            <div class="col-md-12">
+              <button type="button" mat-raised-button color="dark" (click)="clearForm('cms')">Clear</button>
+              &nbsp;
+              <button type="submit" mat-raised-button color="primary" [disabled]="!form.valid">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-md-8 mt-2">
+    <div class="form-group row">
+      <div class="col-md-12 table-con">
+        <mat-table [dataSource]="dataSource" class="shadow">
+          
+          <ng-container matColumnDef="title">
+            <mat-header-cell *matHeaderCellDef class="font-weight-bolder h6"> Title </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{ element.title }} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="created_at">
+            <mat-header-cell *matHeaderCellDef class="font-weight-bolder h6"> Created at </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{ element.created_at | date: 'medium' }} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="action">
+            <mat-header-cell *matHeaderCellDef class="font-weight-bolder h6"> Action </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              <button type="button" mat-mini-fab color="primary" (click)="initUpdate(element.id, '', element.title, element.details, 0, '', 'cms')">
+                <mat-icon class="icon-middle">visibility</mat-icon>
+              </button>
+              &nbsp;
+              <button type="button" mat-mini-fab color="warn" (click)="delete(element.id, 'cms')">
+                <mat-icon class="icon-middle">delete</mat-icon>
+              </button>
+            </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="pt-1 rounded" style="background-color: #673ab7;">
+
+<div class="form-group row">
+  <div class="col-md-4 mt-2">
+    <form [formGroup]="formSkill" (ngSubmit)="submit('skill')">
+      <div class="card shadow rounded">
+        <div class="card-body">
+          <div class="form-group row">
+            <div class="col-md-12 text-center">
+              <p class="h6 font-weight-bolder" *ngIf="!updateSkill">New Skill</p>
+              <p class="h6 font-weight-bolder" *ngIf="updateSkill">Update Skill</p>
+            </div>
+          </div>
+
+          <hr>
+
+          <div class="form-group row">
+            <mat-form-field class="col-md-12">
+              <mat-label>Category</mat-label>
+              <mat-select formControlName="category">
+                <mat-option value="Back-End">Back-End</mat-option>
+                <mat-option value="Front-End">Front-End</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="col-md-12">
+              <mat-label>Title</mat-label>
+              <input type="text" matInput formControlName="title">
+            </mat-form-field>
+
+            <mat-form-field class="col-md-12">
+              <mat-label>Count</mat-label>
+              <input type="number" matInput formControlName="count" [(ngModel)]="value">
+            </mat-form-field>
+
+            <div class="col-md-12">
+              <mat-slider [thumbLabel]="true" [max]="100" [min]="0" [(ngModel)]="value" class="col-md-12" [ngModelOptions]="{standalone: true}">
+              </mat-slider>
+            </div>
+
+            <mat-form-field class="col-md-12">
+              <mat-label>Color</mat-label>
+              <mat-select formControlName="color">
+                <mat-option *ngFor="let color of colors" [value]="color.color">{{ color.label }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <hr>
+
+          <div class="form-group row text-right">
+            <div class="col-md-12">
+              <button type="button" mat-raised-button color="dark" (click)="clearForm('skill')">Clear</button>
+              &nbsp;
+              <button type="submit" mat-raised-button color="primary" [disabled]="!formSkill.valid">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-md-8 mt-2">
+    <div class="form-group row">
+      <div class="col-md-12 table-con">
+        <mat-table [dataSource]="dataSourceSkill" class="shadow">
+
+          <ng-container matColumnDef="category">
+            <mat-header-cell *matHeaderCellDef class="font-weight-bolder h6"> Category </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{ element.category }} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="title">
+            <mat-header-cell *matHeaderCellDef class="font-weight-bolder h6"> Title </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{ element.title }} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="count">
+            <mat-header-cell *matHeaderCellDef class="font-weight-bolder h6"> Count </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{ element.count }} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="created_at">
+            <mat-header-cell *matHeaderCellDef class="font-weight-bolder h6"> Created at </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{ element.created_at | date: 'medium' }} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="action">
+            <mat-header-cell *matHeaderCellDef class="font-weight-bolder h6"> Action </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              <button type="button" mat-mini-fab color="primary" (click)="initUpdate(element.id, element.category, element.title,'', element.count, element.color, 'skill')">
+                <mat-icon class="icon-middle">visibility</mat-icon>
+              </button>
+              &nbsp;
+              <button type="button" mat-mini-fab color="warn" (click)="delete(element.id, 'skill')">
+                <mat-icon class="icon-middle">delete</mat-icon>
+              </button>
+            </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumnsSkill; sticky: true"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumnsSkill;"></mat-row>
+        </mat-table>
+      </div>
+    </div>
+  </div>
+</div>

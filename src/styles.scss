@@ -1,1 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import "~material-design-icons/iconfont/material-icons.css";
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-dark {
+  background-color: #424242;
+  color: #ffffff;
+}
+
+.icon-middle {
+  vertical-align: middle;
+  margin-top: -3px !important;
+}
+
+.top-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.bg-dark-dark {
+  background-color: #424242 !important;
+}
+
+.under-line {
+  text-decoration: underline;
+  text-decoration-color: #673ab7;
+}

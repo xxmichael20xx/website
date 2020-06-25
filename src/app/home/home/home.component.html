@@ -1,0 +1,39 @@
+<div class="wrapper">
+  <div class="container py-3 h-100">
+    <div class="form-group row">
+      <div class="col-md-3 mt-2 bg-white rounded py-2 shadow">
+        <div class="row">
+          <div class="col-md-11 mx-auto">
+            <p class="h6 font-weight-bolder" style="font-size: 15px;">MICHAELANGELO MAMACLAY</p>
+            <p class="text-13" style="margin-top: -10px;">Web Developer</p>
+
+            <img src="/assets/profile.JPG" class="img-fluid rounded" width="250" height="250">
+            <hr class="pt-1 rounded" style="background-color: #673ab7;">
+            <div class="row mt-2">
+              <div class="col-md-12 text-justify" *ngFor="let info of informations">
+                <p class="text-13 font-weight-bolder">{{ info.title }}</p>
+                <p class="text-13" style="margin-top: -5px;">{{ info.details }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8 mt-2 ml-4">
+        <div class="form-group row">
+          <div class="col-md-12 shadow rounded bg-white mb-3">
+            <nav mat-tab-nav-bar>
+              <a mat-tab-link *ngFor="let link of links" [routerLink]="link.path" routerLinkActive
+                #rla="routerLinkActive" [active]="rla.isActive">
+                {{link.label}}
+              </a>
+            </nav>
+          </div>
+
+          <div class="col-md-12 shadow rounded bg-white py-3">
+            <router-outlet></router-outlet>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

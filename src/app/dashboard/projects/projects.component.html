@@ -1,0 +1,30 @@
+<div class="form-group row mt-3">
+  <div class="col-md-12 clearfix">
+    <p class="h5 float-left">List of Projects</p>
+
+    <button type="button" mat-raised-button color="primary" (click)="newProjectDialog()" class="float-right">
+      <mat-icon class="icon-middle">library_add</mat-icon> New Project
+    </button>
+  </div>
+</div>
+
+<hr>
+
+<div class="form-group row">
+  <div class="col-md-3 mx-4 shadow rounded pt-3 mb-3" *ngFor="let project of projects" (click)="viewProject(project.id)">
+    <div class="form-group row">
+      <div class="col-md-12 text-center">
+        <p class="h5">{{ project?.title | uppercase }}</p>
+      </div>
+      <div class="col-md-12 h-100">
+        <p class="h6" [innerHtml]="project?.description"></p>
+      </div>
+      <div class="col-md-12">
+        <hr>
+      </div>
+      <div class="col-md-12">
+        <small>Added on : {{ project?.created_at | date: 'medium' }}</small>
+      </div>
+    </div>
+  </div>
+</div>

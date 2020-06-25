@@ -1,0 +1,33 @@
+<mat-dialog-content>
+  <div class="container py-3">
+    <div class="form-group row">
+      <div class="col-md-12 text-center">
+        <p class="h5">{{ project?.title | uppercase }}</p>
+      </div>
+      <div class="col-md-12">
+        <p class="h6 font-weight-bolder">Description</p>
+        <p class="h6">{{ project?.description }}</p>
+      </div>
+      <div class="col-md-6">
+        <p class="h6 font-weight-bolder">Front-End</p>
+        <p class="h6" *ngFor="let front of fronts">{{ front?.details }}</p>
+      </div>
+      <div class="col-md-6">
+        <p class="h6 font-weight-bolder">Back-End</p>
+        <p class="h6" *ngFor="let back of backs">{{ back?.details }}</p>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="form-group row">
+      <div class="col-md-12 text-right">
+        <button type="button" mat-raised-button color="accent" (click)="close()">Close</button>
+        &nbsp;
+        <button type="button" mat-raised-button color="primary" (click)="updateProject()">Update</button>
+        &nbsp;
+        <button type="button" mat-raised-button color="warn" (click)="deleteProject()">Delete</button>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>
